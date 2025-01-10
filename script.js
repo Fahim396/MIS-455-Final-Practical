@@ -53,3 +53,32 @@ const createMealCard = (meal) => {
     `;
     resultsDiv.appendChild(mealCard);
 };
+
+
+const showAllMeals = (meals) => {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '';
+    meals.forEach(createMealCard);
+    document.getElementById('showAllButton').style.display = 'none';
+};
+
+const showMealDetails = async (mealId) => {
+    try {
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+        const data = await response.json();
+        const meal = data.meals[0];
+        displayMealDetails(meal);
+    } catch (error) {
+        console.error('Error fetching meal details:', error);
+    }
+};
+
+const displayMealDetails = (meal) => {
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) {
+        if (meal[`strIngredient${i}`]) {
+            ingredients.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`);
+        }
+    }
+
+    const instructions = meal.strInstructions.split('\n').filter(step => step.trim() !== '');
