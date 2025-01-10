@@ -17,4 +17,20 @@ const fetchMeals = async (query) => {
 
 const displayResults = (meals) => {
     const resultsDiv = document.getElementById('results');
-    const showAllButton = docum
+    const showAllButton = document.getElementById('showAllButton');
+    resultsDiv.innerHTML = '';
+    showAllButton.style.display = 'none';
+
+    if (meals && meals.length > 0) 
+        const totalMeals = meals.length;
+        const mealsToShow = totalMeals > 5 ? meals.slice(0, 5) : meals;
+        mealsToShow.forEach(createMealCard);
+
+        if (totalMeals > 5) {
+            showAllButton.style.display = 'block';
+            showAllButton.onclick = () => showAllMeals(meals);
+        }
+    } else {
+        resultsDiv.innerHTML = '<p class="text-center">No meals found. Try a different search.</p>';
+    }
+};
