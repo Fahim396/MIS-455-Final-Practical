@@ -47,13 +47,12 @@ const createMealCard = (meal) => {
                 <p class="card-text"><strong>Meal ID:</strong> ${meal.idMeal}</p>
                 <p class="card-text"><strong>Category:</strong> ${meal.strCategory}</p>
                 <p class="card-text"><strong>Cooking Instructions:</strong> ${meal.strInstructions.substring(0, 100)}...</p>
-                <span class="read-more" onclick="showMealDetails('${meal.idMeal}')">See More</span>
+                <span class="read-more" onclick="showMealDetails('${meal.idMeal}')">See</span>
             </div>
         </div>
     `;
     resultsDiv.appendChild(mealCard);
 };
-
 
 const showAllMeals = (meals) => {
     const resultsDiv = document.getElementById('results');
@@ -82,3 +81,35 @@ const displayMealDetails = (meal) => {
     }
 
     const instructions = meal.strInstructions.split('\n').filter(step => step.trim() !== '');
+    const detailsHtml = `
+    <div class="modal fade" id="mealDetailsModal" tabindex="-1" aria-labelledby="mealDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mealDetailsModalLabel">${meal.strMeal}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                   <img src="${meal.strMealThumb}" class="img-fluid w-100 mb-2" alt="${meal.strMeal}">
+                    <div class="px-2">
+                        <p><strong>Cooking Instructions:</strong></p>
+                        <ol class="ps-3">
+                            ${instructions.map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
+
+document.body.insertAdjacentHTML('beforeend', detailsHtml);
+const modal = new bootstrap.Modal(document.getElementById('mealDetailsModal'));
+modal.show();
+
+document.getElementById('mealDetailsModal').addEventListener('hidden.bs.modal', function () {
+    this.remove();
+});
+};
