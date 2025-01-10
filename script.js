@@ -21,7 +21,7 @@ const displayResults = (meals) => {
     resultsDiv.innerHTML = '';
     showAllButton.style.display = 'none';
 
-    if (meals && meals.length > 0) 
+    if (meals && meals.length > 0) {
         const totalMeals = meals.length;
         const mealsToShow = totalMeals > 5 ? meals.slice(0, 5) : meals;
         mealsToShow.forEach(createMealCard);
@@ -43,3 +43,13 @@ const createMealCard = (meal) => {
         <div class="card">
             <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}">
             <div class="card-body">
+             <h5 class="card-title">${meal.strMeal}</h5>
+                <p class="card-text"><strong>Meal ID:</strong> ${meal.idMeal}</p>
+                <p class="card-text"><strong>Category:</strong> ${meal.strCategory}</p>
+                <p class="card-text"><strong>Cooking Instructions:</strong> ${meal.strInstructions.substring(0, 100)}...</p>
+                <span class="read-more" onclick="showMealDetails('${meal.idMeal}')">See More</span>
+            </div>
+        </div>
+    `;
+    resultsDiv.appendChild(mealCard);
+};
