@@ -47,7 +47,7 @@ const createMealCard = (meal) => {
                 <p class="card-text"><strong>Meal ID:</strong> ${meal.idMeal}</p>
                 <p class="card-text"><strong>Category:</strong> ${meal.strCategory}</p>
                 <p class="card-text"><strong>Cooking Instructions:</strong> ${meal.strInstructions.substring(0, 100)}...</p>
-                <span class="read-more" onclick="showMealDetails('${meal.idMeal}')">See</span>
+                <span class="read-more" onclick="showMealDetails('${meal.idMeal}')">See More</span>
             </div>
         </div>
     `;
