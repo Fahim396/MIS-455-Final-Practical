@@ -34,3 +34,12 @@ const displayResults = (meals) => {
         resultsDiv.innerHTML = '<p class="text-center">No meals found. Try a different search.</p>';
     }
 };
+
+const createMealCard = (meal) => {
+    const resultsDiv = document.getElementById('results');
+    const mealCard = document.createElement('div');
+    mealCard.className = 'col-md-4';
+    mealCard.innerHTML = `
+        <div class="card">
+            <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}">
+            <div class="card-body">
