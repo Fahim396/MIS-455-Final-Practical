@@ -102,7 +102,6 @@ main {
     color: #0056b3;
 }
 
-/* Show All Button Styling */
 #showAllButton {
     margin-top: 20px;
     background: linear-gradient(135deg, #38aee6, #5296e4);
@@ -116,7 +115,7 @@ main {
 }
 
 #showAllButton:hover {
-    background: linear-gradient(135deg, #10cac1, #1ae2a6);
+    background: linear-gradient(135deg, #a0ebe7, #a1f0d8);
     transform: scale(1.05);
 }
 
@@ -140,7 +139,7 @@ footer {
 }
 
 .modal-header {
-    background-color: #007bff;
+    background-color: #0a62c0;
     color: white;
     border-radius: 10px 10px 0 0;
 }
@@ -171,7 +170,7 @@ footer {
 .modal-body ul,
 .modal-body ol {
     margin-left: 20px;
-    color: #555;
+    color: #201f1f;
 }
 
 .modal-body li {
