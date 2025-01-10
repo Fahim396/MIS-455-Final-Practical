@@ -182,3 +182,17 @@ footer {
     border-top: 1px solid #ddd;
     padding: 15px;
 }
+
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .modal-dialog {
+        margin: 10px;
+    }
+
+    .modal-body img {
+        height: auto;
+    }
+}
